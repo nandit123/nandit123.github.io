@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Nandit Mehra</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Gradient color1 - color2 - color1 */
+    hr.style-one {
+    border: 0;
+    height: 3px;
+    background: #333;
+    background-image: -webkit-linear-gradient(left, green, blue, green);
+    background-image: -moz-linear-gradient(left, green, blue, green);
+    background-image: -ms-linear-gradient(left, green, blue, green);
+    background-image: -o-linear-gradient(left, green, blue, green);
+    }
+  </style>
+</head>
+<body>
+<div class="container text-cnter">
+  <h1>Nandit Mehra's Website</h1>
+  <h4>Interests - Blockchain, Startups, Finance, Cyber Security</h4>
+  <ul class="list-inline">
+    <li><a href="nanditmehra.me" class="btn btn-primary">Home</a></li>
+    <li class="list-inline-item"><a href="https://twitter.com/nanditmehra">Twitter</a></li>
+    <li class="list-inline-item"><a href="https://www.linkedin.com/in/nanditmehra/">LinkedIn</a></li>
+    <li class="list-inline-item"><a href="https://github.com/nandit123">Github</a></li>
+    <li class="list-inline-item"><a href="https://devpost.com/nandit123">Devpost</a></li>
+  </ul>
+  <hr class="style-one">
+</div>
+
+<div class="container" id="articles">
+    <h3>Securing NodeJS Applications</h3>
+    <p>Increasingly NodeJS is being used by more and more people. Many companies have their 
+        backend written in nodejs for either their Websites, API, etc. Also, Javascript is
+        being seen as a universal language now a days since it can be used to develop frontend of 
+        the websites (using frameworks like react.js, angular, vue.js), native apps - ios and android
+        (using react native, ionic, Native script), for VR apps  (using react VR). Some people are
+        also using js for machine learning, neural networks (Brain.js) but still its a long road to go 
+        in that domain. Now the backend of your apps can be built using NodeJS and is very suitable for
+        development of APIs and microservices.
+    </p>
+    <br>
+    <p>
+        Given said that, many developers and companies would prefer Javascript and related frameworks
+        and NodeJS since multiple work gets done using one language only. Now lets talk about making 
+        your NodeJS backend secure. I will quicky walk you through the key steps you require to do that
+        without having much expertise in cyber security.
+    </p>
+    <h4><strong>1. Use HelmetJS</strong></h4>
+    <p>Use this to quicky set up headers so that the browsers can use their inbuilt functionality
+        to protect your app.
+    </p>
+    <p>Install it using </p>
+    <code>npm install helmet --save</code>
+    <p><br>Then in an express app, add the following</p>
+    <pre>
+        const express = require('express') 
+        const helmet = require('helmet') 
+        const app = express()
+    </pre>
+    <p><br>then to use helmet's functionality use the follwing. hidePoweredBy is to confuse the 
+    person trying to understand what language your website is written in. for others headers read
+    the official documentation.</p>
+    <pre>
+        app.use(helmet({
+            hidePoweredBy: { setTo: 'Python-59' },
+            frameguard: {action: 'deny'},
+            xssFilter: true,
+            noSniff: true, 
+            ieNoOpen: true, 
+            hsts: {maxAge: ninetyDaysInMilliseconds},
+            dnsPrefetchControl: false,
+        }));
+    </pre>
+    <br>
+    <p>
+        The <code>app.use(helmet(...))</code> can be used to to include all the functionalities except,
+        the noCache() and contentSecurityPolicy() which can be implemented as follows. Refer the
+        HelmetJS documentation to setup content security policy as per your need and setup others
+        headers. =>
+    </p>
+    <pre>
+        app.use(helmet.contentSecurityPolicy({
+            directives: {
+                defaultSrc: ["'self'"],
+                scriptSrc: ["'self'", "trusted-cdn.com"]
+            }
+        }));
+
+        app.use(helmet.noCache());
+    </pre>
+
+    <h4><strong>2. Joi</strong></h4>
+</div>
+<hr>
+<div class="container">
+  <p>Nandit Mehra's Website | All content is written by me &copy; 2019</p>
+  <p>Contact: nanditmehra123@gmail.com</p>
+</div>
+</body>
+</html>
