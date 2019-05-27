@@ -67,7 +67,7 @@
         to protect your app.
     </p>
     <p>Install it using </p>
-    <code>npm install helmet --save</code>
+    <code>npm install helmet</code>
     <p><br>Then in an express app, add the following</p>
     <pre>
         const express = require('express') 
@@ -110,7 +110,7 @@
     <p>
         Joi helps to validate user input in your web app or api. It can be easily installed by using - 
     </p>
-    <p><code>npm install joi --save</code></p>
+    <p><code>npm install joi</code></p>
     <p>Now, Joi can be used in a file as following - </p><br>
     <pre>
         const Joi = require('joi');
@@ -171,7 +171,7 @@
             CORS which refers to Cross-Origin Resource Sharing is a mechanism that uses HTTP headers to tell a browser to let a web application running at one origin (domain) have permission to access selected resources from  a server at a different origin (as per dev Moz docs).
     </p>
     <p>
-            Hence if you want your APIs to be run on a specified domain <a href="http://yourwebsite.com">http://yourwebsite.com</a>, then you have to allow your website domain from within the API as follows -
+            Hence if you want your APIs (which run on a different origin) to run on a specified domain <a href="http://yourwebsite.com">http://yourwebsite.com</a>, then you have to allow your website domain from within the API as follows -
     </p>
     <p>
             Send response from your API as follows - 
@@ -186,10 +186,10 @@
             };
     </pre>
     <p>
-            Note that, since CORS works on principle of HTTP headers so, this is only for security of the user and can be overwriiten by any user by disabling CORS on their browser.
+            Note that, since CORS is an HTTP header so, this is only for security of the user and can be overwriiten by any user by disabling CORS on their browser. You can set Access-Control-Allow-Origin = "*" so that your API runs on global origin.
     </p>
     <p>
-            But it helps, in case, if an unauthorized developer tricks a user on his website <a href="http://evil-website.com">http://evil-website.com</a> by fetching the data from your API, the data won’t display on the user’s website and will show CORS error on the console until user himself turns the cors off on their browser.
+            But it helps, in case, if an unauthorized developer tricks a user on his website <a href="http://evil-website.com">http://evil-website.com</a> by fetching the data from your API if your API key is compromised, the data won’t display on the user’s website and will show CORS error on the console until user himself turns the cors off on their browser.
     </p>
 
     <h4><strong>5. OWASP top 10</strong></h4>
@@ -213,7 +213,7 @@
 
     <h4><strong>6. 12 Factor APP</strong></h4>
     <p>
-            If you are building a SAAS, you may need to check the 12 factor app here at <a href="https://12factor.net/">https://12factor.net/</a> which will help you in releasing your web app in more systemized manner and also in a more secure and managed way.
+            If you are building a SAAS, you may need to check the 12 factor app here at <a href="https://12factor.net/">https://12factor.net/</a>. It will help you structure your application from the dawn. As per the 12 factor app, securing your config details, seperating dev-prod stages, having logs at appropriate location, etc. are very important for a secure app. 
     </p>
 </div>
 <br><br><br>
