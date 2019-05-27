@@ -98,7 +98,117 @@
     </pre>
 
     <h4><strong>2. Joi</strong></h4>
+    <p>
+        Joi helps to validate user input in your web app or api. It can be easily installed by using - 
+    </p>
+    <p><code>npm install joi --save</code></p>
+    <p>Now, Joi can be used in a file as following - </p><br>
+    <pre>
+        const Joi = require('joi');
+
+        Version = req.params.Version.toString();
+        console.log(Version);
+        const versionSchema = {
+            a: Joi.string().alphanum().length(2)
+        };
+        const {error, value} = Joi.validate({ a: Version }, versionSchema);
+        if (error !== null) {
+            res.send('NOTOK');
+        } else {
+            // write your code here which runs after validation is success. 
+        }
+    </pre>
+    <p>
+        In the above code, “Version“ is the incoming value we need to validate against our desired schema (versionSchema). As an example, version schema requires the “Version” to be a string, an alphanumeric with the length of 2. If the variable violate this schema, an error is thrown else it passes to the else statement where the proceeding code can be written.
+    </p>
+    <br>
+    <h4><strong>3. Dependecies check using Snyk</strong></h4>
+    <p>
+        Many times, websites or apps are left vulerable since, the libraries or package they use get depreceated or are vulnerable themselves. Now, since the maker of those packages will push a new version on the npm but the versions of those packages in your project are still vulnerable and old.
+    </p>
+    <p>
+            Hence, it is very important to update your packages to stable versions timely. Sometimes, the packages are completely left over or are deprecated in which case they need to be replaced or removed.
+    </p>
+    <p>
+            Snyk is a very important tool that comes into use in such scenarios. Its easy and free to use and gives us proper report about our dependencies in the project. It also informs us if there is a new vulnerability identified.
+    </p>
+    <p>
+        Now lets discuss how to use this,
+    </p>
+    <p>
+        <u>Install snyk tool</u> <br>
+        Run the following command from a terminal, snyk should be installed globally and need not be installed for every project you work on.
+    </p>
+    <code>npm install -g snyk</code><br><br>
+    <p>
+        <u>Authenticate your machine</p></u>
+    </p>
+    <code>snyk auth</code><br><br>
+    <p>
+        <u>Navigate into your code’s directory and run:</p></u>
+    </p>
+    <code>snyk monitor</code><br><br>
+    <p>
+        <u>To resolve</p></u>
+    </p>
+    <code>snyk wizard</code><br><br>
+    <p>
+        <u>To apply snyk patches</p></u>
+    </p>
+    <code>npm run snyk-protect</code><br><br>
+    
+    <h4><strong>4. CORS – for protecting your APIs</strong></h4>
+    <p>
+            CORS which refers to Cross-Origin Resource Sharing is a mechanism that uses HTTP headers to tell a browser to let a web application running at one origin (domain) have permission to access selected resources from  a server at a different origin (as per dev Moz docs).
+    </p>
+    <p>
+            Hence if you want your APIs to be run on a specified domain <a href="http://yourwebsite.com">http://yourwebsite.com</a>, then you have to allow your website domain from within the API as follows -
+    </p>
+    <p>
+            Send response from your API as follows - 
+    </p>
+    <pre>
+        response = {
+            statusCode: 200,
+            headers: {
+                "Access-Control-Allow-Origin" :  <a href="http://yourwebsite.com">http://yourwebsite.com</a>
+            },
+            body: JSON.stringify(“Output Response is this.”),
+            };
+    </pre>
+    <p>
+            Note that, since CORS works on principle of HTTP headers so, this is only for security of the user and can be overwriiten by any user by disabling CORS on their browser.
+    </p>
+    <p>
+            But it helps, in case, if an unauthorized developer tricks a user on his website <a href="http://evil-website.com">http://evil-website.com</a> by fetching the data from your API, the data won’t display on the user’s website and will show CORS error on the console until user himself turns the cors off on their browser.
+    </p>
+
+    <h4><strong>5. OWASP top 10</strong></h4>
+    <p>
+            The OWASP Top 10 is a powerful awareness document for web application security. It represents a broad consensus about the most critical security risks to web applications. Check it at (<a href="https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project">https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project</a>).
+            Now i highly recommend going through the OWASP Node goat project for securing the NodeJS applications which cover the following topics -
+    </p>
+    <ol>
+        <li>Injection</li>
+        <li>Broken Authentication</li>
+        <li>Cross-Site-Scripting (XSS)</li>
+        <li>Insecure Direct Object Reference</li>
+        <li>Security Misconfiguration</li>
+        <li>Sensitive Data Exposure</li>
+        <li>Missing Function Level Access Control</li>
+        <li>Cross-Site Request Forgery (CSRF)</li>
+        <li>Using components with known vulnerabilities</li>
+        <li>Redirects</li>
+    </ol>
+    <p>There is a good explanantion on each of this topic on the node goat project at <a href="http://nodegoat.herokuapp.com/tutorial">http://nodegoat.herokuapp.com/tutorial</a></p>
+
+    <h4><strong>6. 12 Factor APP</strong></h4>
+    <p>
+            If you are building a SAAS, you may need to check the 12 factor app here at <a href="https://12factor.net/">https://12factor.net/</a> which will help you in releasing your web app in more systemaized manner and also in a more secure and managed way.
+    </p>
 </div>
+<br><br><br>
+<hr>
 <hr>
 <div class="container">
   <p>Nandit Mehra's Website | All content is written by me &copy; 2019</p>
