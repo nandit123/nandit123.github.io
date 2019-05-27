@@ -46,24 +46,20 @@
 
 <div class="container" id="articles">
     <h3>Securing NodeJS Applications</h3>
-    <p>Increasingly NodeJS is being used by more and more people. Many companies have their 
-        backend written in nodejs for either their Websites, API, etc. Also, Javascript is
-        being seen as a universal language now a days since it can be used to develop frontend of 
-        the websites (using frameworks like react.js, angular, vue.js), native apps - ios and android
-        (using react native, ionic, Native script), for VR apps  (using react VR). Some people are
-        also using js for machine learning, neural networks (Brain.js) but still its a long road to go 
-        in that domain. Now the backend of your apps can be built using NodeJS and is very suitable for
-        development of APIs and microservices.
+    <p>Increasingly NodeJS is being used by more and more people. Many companies web app 
+            backend is written in NodeJS for either their Websites, API, etc. Also, Javascript is
+            being seen as a universal language nowadays since it can be used to develop the frontend of 
+            the websites (using frameworks like react.js, angular, vue.js), native apps - ios and android
+            (using react native, ionic, Native script), for VR apps  (using react VR). Some people are also using js for machine learning, neural networks (Brain.js) but still, its a long road to go in that domain. Now the backend of your apps can be built using NodeJS and is very suitable for
+            development of APIs and microservices.
     </p>
     <br>
     <p>
-        Given said that, many developers and companies would prefer Javascript and related frameworks
-        and NodeJS since multiple work gets done using one language only. Now lets talk about making 
-        your NodeJS backend secure. I will quicky walk you through the key steps you require to do that
-        without having much expertise in cyber security.
+        Given said that, many developers and companies would prefer Javascript and related frameworks and NodeJS since multiple works get done using one language only. Now let us talk about making your NodeJS backend secure. I will quickly walk you through the key steps you require to do that
+        without having much expertise in cybersecurity.   
     </p>
     <h4><strong>1. Use HelmetJS</strong></h4>
-    <p>Use this to quicky set up headers so that the browsers can use their inbuilt functionality
+    <p>Use this to quickly set up headers so that the browsers can use their inbuilt functionality
         to protect your app.
     </p>
     <p>Install it using </p>
@@ -74,9 +70,7 @@
         const helmet = require('helmet') 
         const app = express()
     </pre>
-    <p><br>then to use helmet's functionality use the follwing. hidePoweredBy is to confuse the 
-    person trying to understand what language your website is written in. for others headers read
-    the official documentation.</p>
+    <p><br>then to use helmet's functionality use the following. hidePoweredBy is to confuse the person trying to understand what language your website is written in. For other headers read the official documentation.</p>
     <pre>
         app.use(helmet({
             hidePoweredBy: { setTo: 'Python-59' },
@@ -90,10 +84,9 @@
     </pre>
     <br>
     <p>
-        The <code>app.use(helmet(...))</code> can be used to to include all the functionalities except,
+        The <code>app.use(helmet(...))</code> can be used to include all the functionalities except,
         the noCache() and contentSecurityPolicy() which can be implemented as follows. Refer the
-        HelmetJS documentation to setup content security policy as per your need and setup others
-        headers. =>
+        HelmetJS documentation to setup content security policy as per your need and set up other headers. =>
     </p>
     <pre>
         app.use(helmet.contentSecurityPolicy({
@@ -108,7 +101,7 @@
 
     <h4><strong>2. Joi</strong></h4>
     <p>
-        Joi helps to validate user input in your web app or api. It can be easily installed by using - 
+        Joi helps to validate user input in your web app or API. It can be easily installed by using - 
     </p>
     <p><code>npm install joi</code></p>
     <p>Now, Joi can be used in a file as following - </p><br>
@@ -128,21 +121,21 @@
         }
     </pre>
     <p>
-        In the above code, “Version“ is the incoming value we need to validate against our desired schema (versionSchema). As an example, version schema requires the “Version” to be a string, an alphanumeric with the length of 2. If the variable violate this schema, an error is thrown else it passes to the else statement where the proceeding code can be written.
+        In the above code, “Version“ is the incoming value we need to validate against our desired schema (versionSchema). As an example, version schema requires the “Version” to be a string, an alphanumeric with a length of 2. If the variable violates this schema, an error is thrown else it passes to the else statement where the proceeding code can be written.
     </p>
     <br>
     <h4><strong>3. Dependencies check using Snyk</strong></h4>
     <p>
-        Many times, websites or apps are left vulerable since, the libraries or package they use get depreceated or are vulnerable themselves. Now, since the maker of those packages will push a new version on the npm but the versions of those packages in your project are still vulnerable and old.
+        Many times, websites or apps are left vulnerable since the libraries or packages they use get deprecated or are vulnerable themselves. Now, since the maker of those packages will push a new version on the npm but the versions of those packages in your project are still vulnerable and old.
     </p>
     <p>
-            Hence, it is very important to update your packages to stable versions timely. Sometimes, the packages are completely left over or are deprecated in which case they need to be replaced or removed.
+        Hence, it is very important to update your packages to stable versions timely. Sometimes, the packages are completely leftover or are deprecated in which case they need to be replaced or removed.
     </p>
     <p>
-            Snyk is a very important tool that comes into use in such scenarios. Its easy and free to use and gives us proper report about our dependencies in the project. It also informs us if there is a new vulnerability identified.
+            Snyk is a very important tool that comes into use in such scenarios. It's easy and free to use and gives us a proper report about our dependencies in the project. It also informs us if there is a new vulnerability identified.
     </p>
     <p>
-        Now lets discuss how to use this,
+        Now let's discuss how to use this,
     </p>
     <p>
         <u>Install snyk tool</u> <br>
@@ -168,13 +161,13 @@
     
     <h4><strong>4. CORS – for protecting your APIs</strong></h4>
     <p>
-            CORS which refers to Cross-Origin Resource Sharing is a mechanism that uses HTTP headers to tell a browser to let a web application running at one origin (domain) have permission to access selected resources from  a server at a different origin (as per dev Moz docs).
+        CORS which refers to Cross-Origin Resource Sharing is a mechanism that uses HTTP headers to tell a browser to let a web application running at one origin (domain) have permission to access selected resources from a server at a different origin (as per dev Moz docs).
     </p>
     <p>
-            Hence if you want your APIs (which run on a different origin) to run on a specified domain <a href="http://yourwebsite.com">http://yourwebsite.com</a>, then you have to allow your website domain from within the API as follows -
+        Hence if you want your APIs (which run on a different origin) to run on a specified domain <a href="http://yourwebsite.com">http://yourwebsite.com</a>, then you have to allow your website domain from within the API as follows -
     </p>
     <p>
-            Send response from your API as follows - 
+        Send response from your API as follows - 
     </p>
     <pre>
         response = {
@@ -186,16 +179,16 @@
             };
     </pre>
     <p>
-            Note that, since CORS is an HTTP header so, this is only for security of the user and can be overwriiten by any user by disabling CORS on their browser. You can set Access-Control-Allow-Origin = "*" so that your API runs on global origin.
+        Note that, since CORS is an HTTP header so, this is only for the security of the user and can be overwritten by any user by disabling CORS on their browser. You can set Access-Control-Allow-Origin = "*" so that your API runs on the global origin.
     </p>
     <p>
-            But it helps, in case, if an unauthorized developer tricks a user on his website <a href="http://evil-website.com">http://evil-website.com</a> by fetching the data from your API if your API key is compromised, the data won’t display on the user’s website and will show CORS error on the console until user himself turns the cors off on their browser.
+        But it helps, in case, if an unauthorized developer tricks a user on his website <a href="http://evil-website.com">http://evil-website.com</a> by fetching the data from your API if your API key is compromised, the data won’t display on the user’s website and will show CORS error on the console until user himself turns the cors off on their browser.
     </p>
 
     <h4><strong>5. OWASP top 10</strong></h4>
     <p>
             The OWASP Top 10 is a powerful awareness document for web application security. It represents a broad consensus about the most critical security risks to web applications. Check it at (<a href="https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project">https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project</a>).
-            Now i highly recommend going through the OWASP Node goat project for securing the NodeJS applications which cover the following topics -
+            Now I highly recommend going through the OWASP Node goat project for securing the NodeJS applications which cover the following topics -
     </p>
     <ol>
         <li>Injection</li>
@@ -209,15 +202,19 @@
         <li>Using components with known vulnerabilities</li>
         <li>Redirects</li>
     </ol>
-    <p>There is a good explanantion on each of this topic on the node goat project at <a href="http://nodegoat.herokuapp.com/tutorial">http://nodegoat.herokuapp.com/tutorial</a></p>
+    <p>
+        There is a good explanantion on each of this topic on the node goat project at <a href="http://nodegoat.herokuapp.com/tutorial">http://nodegoat.herokuapp.com/tutorial</a>
+    </p>
 
     <h4><strong>6. 12 Factor APP</strong></h4>
     <p>
-            If you are building a SAAS, you may need to check the 12 factor app here at <a href="https://12factor.net/">https://12factor.net/</a>. It will help you structure your application from the dawn. As per the 12 factor app, securing your config details, seperating dev-prod stages, having logs at appropriate location, etc. are very important for a secure app. 
+        If you are building a SAAS, you may need to check the 12 factor app here at <a href="https://12factor.net/">https://12factor.net/</a>. It will help you structure your application from the dawn. As per the 12 factor app, securing your config details, separating dev-prod stages, having logs at the appropriate locations, etc. are very important for a secure app. 
     </p>
     <br>
-    <h4>Conclusion</h4>
-    <p>I believe security is not something that you want to think in the last week before making your application public. Rather, the security practices need to taken care of from the start and need to reviewed at regular intervals in your software development cycle.</p>
+    <h4><strong>Conclusion</strong></h4>
+    <p>
+        I believe security is not something that you want to think in the last week before making your application public. Rather, the security practices need to be taken care of from the start and we need to review it at regular intervals in our software development cycle.
+    </p>
 </div>
 <br><br><br>
 <hr>
